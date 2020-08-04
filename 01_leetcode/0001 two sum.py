@@ -56,6 +56,10 @@ class Solution:
                 return nums.index(num), switched[target - num]
 # 와 어떻게 이런 생각을? 진짜 대단하당..
 # 시간복잡도 O(n), runtime 상위 25프로
+# 아 근데 nums에 같은 값이 여러개 들어갈 수 있을텐데 그럼 dict로 만드는 과정에서 오류가 생길텐데..?
+# 아! 그래서 i 대신 nums.index(num) 을 return 하는 거구나. 같은게 두개면 dict과정에서 첫번째는 덮여버릴거고
+# nums.index(num)은 num의 첫번째 인덱스가 살아나니까
+# 고단수지만 좀 아슬아슬한걸?
 
 
 
