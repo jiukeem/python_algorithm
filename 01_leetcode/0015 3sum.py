@@ -17,7 +17,7 @@ class Solution:
                         result.append((nums[i], nums[j], nums[k]))
 
         return result
-# The solution set must not contain duplicate triplets. 조건 만족하게 만드는게 너무 어렵다ㅜㅜ
+# The solution set must not contain duplicate triplets 조건 만족하게 만드는게 너무 어렵다ㅜㅜ
 # 브루트포스조차도 책 보고 겨우겨우 따라했다
 # 이 방법은 시간 초과가 뜬다. O(n^3) 이니 당연함
 # two sum 과 다르게 인덱스를 보존하지 않아도 된다. 그럴 경우는 sort를 하고 시작하면 편한듯 빅오는 (O(n))일걸
