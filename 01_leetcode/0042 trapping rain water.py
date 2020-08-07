@@ -1,3 +1,4 @@
+# 내 풀이
 class Solution:
     def trap(self, height: List[int]) -> int:
         extreme_point = []
