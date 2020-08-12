@@ -45,7 +45,7 @@ class Solution:
             rev, rev.next, slow = slow, rev, slow.next
             # 이 부분 유의! 다줄 할당 개념에 유의하기
             # 이 부분을 두 줄에 나눠서 rev, rev.next 와 slow 를 따로 쓰면
-            # rev가 slow에 할당되어 있는 상태에서 rev.next를 수정하므로
+            # rev와 slow가 같은 곳을 참조하고 있는 상태에서 rev.next를 수정하므로
             # slow.next 도 앞으로 가는게 아니라 rev 연결리스트를 따라서 같이 뒤로 이동해버린다
             # 파이썬은 모든 변수들이 참조를 할당받는 객체 방식이라 그렇다.
 
