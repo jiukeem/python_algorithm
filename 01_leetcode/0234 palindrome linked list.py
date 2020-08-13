@@ -68,3 +68,33 @@ class Solution:
 # 지금은 runner 개념 뿐만 아니라 연결리스트가 익숙지않아서 좀 더 어렵게 느껴질 수 있는데
 # 여러번 써보면 금방 손에 익을 것 같다.
 # runtime 상위 2퍼센트에 memory usage 상위 9프로다.. 짱짱
+
+
+# -----------------------------------------------------------------------------------------
+# 0813(연결리스트 한번 훑기 완료한 날) 책 없이 나 혼자 다시 풀이 도전
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        # 예외처리
+        if not head:
+            return True
+
+        slow = fast = head
+        rev = ListNode(None)
+        while fast and fast.next:
+            rev, rev.next, slow = slow, rev, slow.next
+            fast = fast.next.next
+
+        # 연결리스트의 노드 개수가 홀수인 경우, 중앙에 있는 slow를 한 칸 더 옮겨준다.
+        if fast:
+            slow = slow.next
+
+        while slow:
+            if slow != rev:
+                return False
+            slow = slow.next
+            rev = rev.next
+
+        return True
+
+
+
