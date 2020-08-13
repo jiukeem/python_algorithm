@@ -37,3 +37,25 @@ class Solution:
 # 직접 노트에 연산 과정을 풀어써보고 나서야 그렇구나- 했다.
 # 두 방식의 속도는 거의 비슷하며, memory usage는 반복구조가 좀 더 낮다.
 # 나는 반복 구조가 더 잘 읽히는 것 같다.
+
+
+# -----------------------------------------------------------------------------------------
+# 0813(연결리스트 한번 훑기 완료한 날) 책 없이 나 혼자 다시 풀이 도전
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        if not head:
+            return None
+
+        root = ListNode(None)
+        root.next = head
+
+        while head.next:
+            nxt = head.next
+            root.next, nxt.next, head.next = nxt, root.next, head.next.next
+
+        return root.next
+# 세상에세상에~~~ 너무 행복해~~~~ 너무 잘돌아간다(runtime, memory 똑같음!)~~~
+# 코드는 조금 지저분할지 몰라도 내가 제대로 이해하고 있다는 거잖아! >_< 뿌듯
+# 이제 조금씩조금씩 다듬어주면서 어떻게 더 간결하고 명확하게 짤 수 있을까 생각해보자
+
+

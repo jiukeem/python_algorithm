@@ -80,7 +80,6 @@ class Solution:
 # 나도 다음에 이렇게 짜야징!
 
 
-
 # 숫자형 리스트를 단일 값으로 병합하기 에 대한 추가 설명
 '''
 num = int(''.join(str(i) for i in lst)) 이 부분에 대한 설명이다. 
@@ -97,3 +96,29 @@ functools.reduce 는 두 인수의 함수를 누적 적용하는 메소드다.
 즉, 위의 식을 보면 x에 10을 곱하고 y를 일의자리로 더한다. 그리고 걔네에 10을 곱하고 다음 y를 일의자리에 더해준다.
 굉장히 직관적이고 멋진 방식이다. 이해하긴 했는데 도움없이 나 혼자 쓸 수 있을지는...
 '''
+
+
+# -----------------------------------------------------------------------------------------
+# 0813(연결리스트 한번 훑기 완료한 날) 책 없이 나 혼자 다시 풀이 도전
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        above = 0
+        root = result = ListNode(None)
+        while l1 or l2 or above:
+            sum = 0
+            if l1:
+                sum += l1.val
+                l1 = l1.next
+            if l2:
+                sum += l2.val
+                l2 = l2.next
+
+            above, value = divmod(sum+above, 10)
+            result.next = ListNode(value)
+            result = result.next
+
+        return root.next
+# ㅠㅠㅠㅠ 너무 행복햄 바로 통과~~
+# 나는 10을 넘는다 해서 above 라고 이름붙였는데 다들 carry로 쓰더라
+
+

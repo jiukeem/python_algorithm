@@ -81,20 +81,28 @@ class Solution:
         slow = fast = head
         rev = ListNode(None)
         while fast and fast.next:
-            rev, rev.next, slow = slow, rev, slow.next
             fast = fast.next.next
+            rev, rev.next, slow = slow, rev, slow.next
 
-        # 연결리스트의 노드 개수가 홀수인 경우, 중앙에 있는 slow를 한 칸 더 옮겨준다.
+
+        # 연결리스트의 노드 개수가 홀수인 경우, 중앙에서 멈춘 slow를 한 칸 더 옮겨준다.
         if fast:
             slow = slow.next
 
         while slow:
-            if slow != rev:
+            if slow.val != rev.val:
                 return False
             slow = slow.next
             rev = rev.next
 
         return True
+# 잘했으!
+# 다중할당 때문에 고생 좀 했다. rev, rev.next, slow 를 한줄에 써야할 뿐만 아니라
+# fast = fast.next.next 가 그것보다 윗 줄에 위치해야 한다.
+# fast 와 slow 도 처음에 같은 노드를 참조하고 있으므로(head) rev.next = rev를 먼저 하면
+# fast.next 도 None 이 되기 때문에 None에는 .next가 없다는 에러가 난다.
+# 그리고 밑의 while문에서 slow.val 과 rev.val 대신 slow != rev 로 했었는데
+# 자꾸 True 가 나와야할 샘플에서도 false 가 난다. 링크까지 같은데 왜 그럴까?
 
 
 
