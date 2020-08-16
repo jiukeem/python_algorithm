@@ -5,6 +5,6 @@ python-practice
 >레퍼런스: blex.me/@baealex/series
 
 01_leetcode 
->릿코드 문제들을 푼 코드들
+>릿코드 문제들을 푼 코드들.
 >레퍼런스: '파이썬 알고리즘 인터뷰'
 
