@@ -31,5 +31,53 @@ class Solution:
 # 일단 패스..
 
 
+# 브루트포스 풀이 
+class Solution:
+    def trap(self, height: List[int]) -> int:
+
+        rain = 0
+        for i, h in enumerate(height):
+            while True:
+                condition = 0
+                for j, height_left in enumerate(height[:i]):
+                    if height_left > h:
+                        condition += 1
+                        break
+
+                for k, height_right in enumerate(height[i + 1:]):
+                    if height_right > h:
+                        condition += 1
+                        break
+
+                if condition == 2:
+                    rain += 1
+                else:
+                    break
+
+                h += 1
+
+        return rain
+# O(n^3) 이라 time limit exceeded 지만 짤 수 있다는 것만으로도 일단은 발전이다
+
+
+# 좀 더 발전한 브루트포스 하나 더!
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        rain = 0
+        for i, h in enumerate(height):
+            max_left = 0
+            max_right = 0
+            for j, height_left in enumerate(height[:i]):
+                max_left = max(height_left, max_left)
+            for k, height_right in enumerate(height[i+1:]):
+                max_right = max(max_right, height_right)
+
+            if max_right > h and max_left > h:
+                rain += min(max_left, max_right) - h
+
+        return rain
+# O(n^2) 이다! 여전히 타임아웃이지만 그래도ㅎㅎ
+
+
 
 
