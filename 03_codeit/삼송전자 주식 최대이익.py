@@ -1,3 +1,5 @@
+# 리스트에 그 날의 주식가격이 기록되어있다. 어느날 사서 어느날 파는게 최대이익을 낼지 계산하는 문제
+
 # 브루트포스 O(n^2)
 def max_profit(stock_list):
     max_profit = stock_list[1] - stock_list[0]
