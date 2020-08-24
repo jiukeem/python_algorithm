@@ -2,7 +2,7 @@ python-practice
 
 00_자료구조 구현
 >연결리스트, 스택, 큐, 트리 등의 자료구조를 파이썬으로 구현해본 작업들.
->레퍼런스: blex.me/@baealex/series/
+>레퍼런스: blex.me/@baealex/series/ + 코드잇 자료구조 코스
 
 >노트필기 파일은 코드잇에서 자료구조 수업을 들으며 정리한 것.
 
