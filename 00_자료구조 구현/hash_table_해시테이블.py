@@ -1,4 +1,5 @@
 # 파이썬 리스트 자료형을 이용해서 구현
+# chaining 사용
 
 from chaining용 연결리스트 import LinkedList
 # 이거 왜 안불러와지지ㅜㅜ
