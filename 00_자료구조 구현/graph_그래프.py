@@ -6,6 +6,9 @@ class StationNode:
         self.station_name = station_name
         self.adjacent_stations = []
         self.visited = False
+        # 탐색할 때 방문여부 저장
+        self.predecessor = None
+        # bfs를 통한 최단경로탐색시 사용
 
     def add_connection(self, station_to_connect):
         # 무방향그래프이므로 양쪽 노드에 서로를 추가
