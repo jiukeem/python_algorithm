@@ -5,8 +5,9 @@ class StationNode:
     def __init__(self, station_name):
         self.station_name = station_name
         self.adjacent_stations = []
+        self.visited = False
 
-    def add_connections(self, station_to_connect):
+    def add_connection(self, station_to_connect):
         # 무방향그래프이므로 양쪽 노드에 서로를 추가
         self.adjacent_stations.append(station_to_connect)
         station_to_connect.adjacent_stations.append(self)
@@ -21,12 +22,13 @@ class StationNode:
         return str
 
 
-def create_station_nodes(input_file):
+def create_station_graph(input_file):
     # 같은 폴더내에 위치한 stations 텍스트파일을 읽어와서 노드로 생성후, 노드들을 저장한 딕셔러리를 return
     stations = {}
 
     with open(input_file) as stations_raw_file:
         for line in stations_raw_file:
+            previous_station = None
             subway_line = line.strip().split('-')
             # 앞뒤 띄어쓰기 벗기고 -기준으로 쪼갬
 
@@ -36,10 +38,18 @@ def create_station_nodes(input_file):
                 if station_name not in stations:
                     current_station_node = StationNode(station_name)
                     stations[station_name] = current_station_node
+                else:
+                    current_station_node = stations[station_name]
+
+                if previous_station is not None:
+                    stations[station_name].add_connection(previous_station)
+
+                previous_station = current_station_node
 
     return stations
 
-stations = create_station_nodes("./stations.txt")
+stations = create_station_graph("./stations.txt")
 
-# stations에 저장한 역들 이름 출력
-print(stations.keys())
+# stations에 저장한 역과 인접역(인접리스트)들 이름 출력
+for station in stations.keys():
+    print(stations[station])
