@@ -77,7 +77,26 @@ class Solution:
 # 더 간결하고 이해하기 쉽다. 시간/공간복잡도는 당연히 같다
 
 
+# 0830 복습 겸 다시한번
+class Solution:
+    def isValid(self, s: str) -> bool:
+        stack = []
+        # 리스트로 구현한 스택 추상자료형을 사용하자
+        table = {
+            ')': '(',
+            '}': '{',
+            ']': '['
+        }
 
+        for char in s:
+            if char in table.values():
+                stack.append(char)
+            else:
+                if not stack or stack.pop() != table[char]:
+                    return False
+
+        return not stack
+# 옛날보다 성장했군... 
 
 
 
