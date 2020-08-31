@@ -85,7 +85,6 @@ heapq.heapify(tmp) -> 기존의 리스트를 힙으로 변환
 최대 힙은 따로 지원하지 않는데, 만들고 싶다면 우선순위가 포함된 튜플을 사용하자
 nums = [4, 1, 7, 3, 8, 5]
 heap = []
-
 for num in nums:
 heapq.heappush(heap, (-num, num) *(우선순위, 값)
 while heap:
