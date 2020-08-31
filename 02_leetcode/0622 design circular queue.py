@@ -74,3 +74,5 @@ class MyCircularQueue:
 # param_4 = obj.Rear()
 # param_5 = obj.isEmpty()
 # param_6 = obj.isFull()
+
+# 원형큐가 생소했지만 구현 자체는 어렵진 않았다

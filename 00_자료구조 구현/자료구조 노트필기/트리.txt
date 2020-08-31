@@ -74,6 +74,25 @@ A   D    J
 
 힙을 사용하면 추출은 동적배열이나 이중연결리스트보다 오래 걸리지만 데이터 삽입은 더 효율적이다. 각각의 상황에 따라 더 적절한 것을 사용하면 되겠다.
 
+파이썬에서는 heapq 라는 내부 모듈을 지원한다. 일반적인 리스트를 min heap(부모노드가 자식노드보다 작은 힙)처럼 다룰 수 있게 해준다. 모듈임포트는 import heapq
+heap = []
+heapq.heappush(heap, 1) -> 힙에 노드1 추가
+heap[0] -> 가장 작은 원소에 접근
+heapq.heappop(heap) -> 가장 작은 원소를 삭제하면서 return. 내부에서 heapify가 진행되면서 자동적으로 그 다음으로 작은 원소가 루트노드가 된다. *위에서 몇 번 언급했지만 [0]인덱스 빼고는 [i]인덱스가 i번째로 작은 요소라는 보장이 없다.
+tmp =[7, 5, 8, 3]
+heapq.heapify(tmp) -> 기존의 리스트를 힙으로 변환
+
+최대 힙은 따로 지원하지 않는데, 만들고 싶다면 우선순위가 포함된 튜플을 사용하자
+nums = [4, 1, 7, 3, 8, 5]
+heap = []
+
+for num in nums:
+heapq.heappush(heap, (-num, num) *(우선순위, 값)
+while heap:
+    print(heapq.heappop(heap)[1])
+
+
+
 
 
 이진 탐색 트리(binary search tree)
