@@ -7,3 +7,6 @@
 class Solution:
     def distributeCoins(self, root: TreeNode) -> int:
         
+        
+# 해설봐도 이해가 잘 안됨...:( 나중에 다시 보는걸로
+        
