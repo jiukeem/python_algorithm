@@ -35,3 +35,7 @@ class Solution:
 # Intuition: 아이디어 자체가 틀렸다.
 #            홀수레벨 노드의 합과 짝수레벨 노드의 합 중 작은 값을 return 했는데 반례가 있음
 #            [0,0,null,null,0,0,null,null,0,0]
+
+# 코드만 놓고 보자면 위에 recursion은 잘 짰고 밑에 0인 요소를 제외하고 min 값을 도출해낼 때는 더 간결하게 쓸 수 있을 것 같은데 어떻게 하지?
+
+# leetcode solution을 봤는데 아직 hard는 도전하지 않는걸로..
