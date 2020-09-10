@@ -20,8 +20,6 @@ def solution(genres, plays):
     return ans
 # sorted에서 딕셔너리가 리스트로 전환되어 버림. 한번 더 도전!
 
-from collections import defaultdict
-
 
 def solution(genres, plays):
     n = len(plays)
@@ -31,11 +29,9 @@ def solution(genres, plays):
         tot[genre].append((plays, i))
 
     for pairs in tot.values():
-        pairs = sorted(pairs, key=lambda pair: (pair[0], pair[1]), reverse=True)
+        pairs.sort(key=lambda pair: (pair[0], pair[1]), reverse=True)
     # 딕셔너리 tot에 대해 gerne : [(play, i), (play, i)], gerne: [], gerne: [] ... 정렬
     # play가 높은 순, play가 같을 경우 i가 높은 순으로 정렬완료
-
-    return tot.values()
 
     ord = defaultdict(int)
     for genre, play in zip(genres, plays):
@@ -51,6 +47,7 @@ def solution(genres, plays):
 
     return ans
 # 에러는 안나지만 제대로 된 값이 안나온다. 어디가 문제일까~
+# defaultdict를 사용하는 경우 print가 어려워서 디버깅이 어렵다.
 
 
 
