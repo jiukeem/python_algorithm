@@ -14,7 +14,7 @@ def solution(n):
     temary += str(j)
 
     ans = ''
-    for s in reversed(temary):
+    for s in temary[::-1]:
         ans += table[s]
 
     return int(ans)
@@ -26,7 +26,7 @@ def solution(n):
 #            이 나라가 그지같다. 0은 표현안할거여? 0을 1이라고 표현해야하는데 1 -> 1 부터 시작하니 아구가 안맞는당. 다른 방법을 생각해야 할 것 같다.
 
 
-# 재귀함수로 10진수를 n진수로 변환하기
+# 번외) 재귀함수로 10진수를 n진수로 변환하기
 def convert(number, n):
     i, j = divmod(number, n)
     if i == 0:
