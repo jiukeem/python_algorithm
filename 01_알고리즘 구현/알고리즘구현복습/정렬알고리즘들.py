@@ -106,3 +106,86 @@ array = [3, 6, 2123, 4, 76, 47, 2, 94, 143, 2, 5]
 print(quick_sort_2(array, 0, len(array) - 1))
 # 역시 in-place는 어려워
 
+
+# 힙 정렬
+def heapify(tree, idx, tree_size):
+    left_child_idx = idx * 2
+    right_child_idx = idx * 2 + 1
+
+    max_idx = idx
+    if left_child_idx < tree_size:
+        if tree[max_idx] < tree[left_child_idx]:
+            max_idx = left_child_idx
+
+    if right_child_idx < tree_size:
+        if tree[max_idx] < tree[right_child_idx]:
+            max_idx = right_child_idx
+
+    if max_idx != idx:
+        tree[max_idx], tree[idx] = tree[idx], tree[max_idx]
+        heapify(tree, max_idx, tree_size)
+
+def heapify_upward(tree, idx, tree_size):
+    parent_idx = idx // 2
+    if parent_idx > 0 and tree[parent_idx] > tree[idx]:
+        tree[parent_idx], tree[idx] = tree[idx], tree[parent_idx]
+        print(tree)
+        heapify_upward(tree, parent_idx, tree_size)
+
+def insert(heap, num):
+    heap.append(num)
+    heap = [None] + heap
+    print(heap)
+    heap_size = len(heap)
+    heapify_upward(heap, heap_size-1, heap_size)
+    return heap[1:]
+
+def heap_sort(tree):
+    tree_size = len(tree)
+
+    for i in range(tree_size-1, 0, -1):
+        heapify(tree, i, tree_size)
+
+    for i in range(tree_size-1, 1, -1):
+        tree[i], tree[1] = tree[1], tree[i]
+        heapify(tree, 1 ,i)
+
+    return tree[1:]
+
+array = [None, 3, 6, 2123, 4, 76, 47, 2, 94, 143, 2, 5]
+sorted_arr = heap_sort(array)
+print(sorted_arr)
+# Time Complexity: 맨 아래 포문을 보면 heapify 의 시간복잡도 O(lg(n)) * 포문 O(n) = O(n * lg(n))
+
+
+# 힙 정렬 헷갈려서 한번 더
+def heapify_2(tree, idx, end):
+    left_child_idx = idx * 2
+    right_child_idx = idx * 2 + 1
+
+    max_idx = idx
+    if left_child_idx < end and tree[left_child_idx] > tree[max_idx]:
+        max_idx = left_child_idx
+
+    if right_child_idx < end and tree[right_child_idx] > tree[max_idx]:
+        max_idx = right_child_idx
+
+    if max_idx != idx:
+        tree[max_idx], tree[idx] = tree[idx], tree[max_idx]
+        heapify_2(tree, max_idx, end)
+
+def heap_sort_2(tree):
+    tree = [None] + tree
+    tree_size = len(tree)
+
+    # 힙속성을 부여하는 작업
+    for i in range(tree_size - 1, 0, -1):
+        heapify_2(tree, i, tree_size)
+
+    for i in range(tree_size - 1, 1, -1):
+        tree[1], tree[i] = tree[i], tree[1]
+        heapify_2(tree, 1, i)
+
+    return tree[1:]
+array = [3, 6, 2123, 4, 76, 47, 2, 94, 143, 2, 5]
+print(heap_sort_2(array))
