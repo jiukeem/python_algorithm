@@ -189,3 +189,57 @@ def heap_sort_2(tree):
     return tree[1:]
 array = [3, 6, 2123, 4, 76, 47, 2, 94, 143, 2, 5]
 print(heap_sort_2(array))
+
+# 힙한번만 더. 정렬되지 않았을 때는 힙피파이를 아래에서부터 진행해야 한다(힙속성을 갖출때) - 아직 힙이 아닌 부분트리와 비교해봤자 의미가 없기 때문
+# 반대로 이미 힙 속성을 지닌 상태에서 루트와 리프를 바꾸고 루트인덱스에 대해서 위에서 아래로 힙피파이를 한번만 진행하는 것은 이미 나머지 부분 트리들이 힙속성을 갖춘 상태이기 때문
+
+def heapify_3(tree, idx, end_idx):
+    left_child_idx = idx * 2
+    right_child_idx = idx * 2 + 1
+
+    max_idx = idx
+    if left_child_idx < end_idx and tree[max_idx] < tree[left_child_idx]:
+        max_idx = left_child_idx
+
+    if right_child_idx < end_idx and tree[max_idx] < tree[right_child_idx]:
+        max_idx = right_child_idx
+
+    if max_idx != idx:
+        tree[max_idx], tree[idx] = tree[idx], tree[max_idx]
+        heapify_3(tree, max_idx, end_idx)
+
+def heap_sort_3(tree):
+    tree = [None] + tree
+    n = len(tree)
+
+    # 트리를 힙으로 만들자
+    for i in range(n-1, 0, -1):
+        heapify_3(tree, i, n-1)
+
+    # 힙정렬
+    for i in range(n-1, 1, -1):
+        tree[1], tree[i] = tree[i], tree[1]
+        heapify_3(tree, 1, i)
+
+    return tree[1:]
+
+array = [3, 6, 2123, 4, 76, 47, 2, 94, 143, 2, 5]
+print(heap_sort_3(array))
+# 이제 완벽히 이해했다.
+# Time Complexity: O(n*lg(n))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
