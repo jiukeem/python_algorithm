@@ -18,3 +18,14 @@ def dfs(graph, start_node):
                 stack.append(connected_node)
                 connected_node.visited = 1
 
+# 재귀 사용한 dfs
+def dfs_visit(adjacent_list, element, visited):
+    visited.append(element)
+    for next_ele in adjacent_list[element]
+        if next_ele not in visited:
+            dfs_visit(adjacent_list, next_ele, visited)
+
+def dfs(adjacent_list, start):
+    visited = []
+    dfs_visit(adjacent_list, start, visited)
+    return visited
