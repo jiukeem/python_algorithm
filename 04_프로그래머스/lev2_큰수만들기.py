@@ -36,5 +36,21 @@ def solution(number, k):
 #       맨 마지막에 if count < k 부분을 추가 코드없이 return 안에 녹여서 썼다.
 
 
-# 다른 사람들 풀이에서 stack을 활용한 걸 봤다. 스택을 써서 한번 더 풀어보자.
+# 다른 사람들 풀이에서 stack을 활용한 걸 봤다. 스택을 써서 한번 더 도전해보자
+def solution(number, k):
+    stack, count = [number[0]], 0
+    for i in range(1, len(number)):
+        while stack and count < k and stack[-1] < number[i]:
+            stack.pop()
+            count += 1
+        stack.append(number[i])
+        if count == k:
+            stack += number[i + 1:]
+            break
+
+    return ''.join(stack)[:len(number) - k]
+# Status: Accepted
+# Algorithm: Stack
+# Note: 세상에 그리디보다 훨씬 빠르다. while 문 조건이 좀 많아서 지저분하다고 느껴지는데 급하게 짠거라서 좀 더 다듬을 수 있을 것 같다.
+#       가장 오래걸리는 tc 기준으로 92ms vs 7000ms
 
