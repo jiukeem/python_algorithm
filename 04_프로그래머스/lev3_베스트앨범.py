@@ -18,7 +18,7 @@ def solution(genres, plays):
             ans.append(plays[1][1])
 
     return ans
-# sorted에서 딕셔너리가 리스트로 전환되어 버림. 한번 더 도전!
+# sorted에서 딕셔너리가 리스트로 전환되어버림. 한번 더 도전!
 
 
 def solution(genres, plays):
