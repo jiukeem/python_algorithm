@@ -38,3 +38,13 @@ def solution(numbers, target):
         return solution(numbers[1:], target - numbers[0]) + solution(numbers[1:], target + numbers[0])
 # 원리는 내 풀이와 같다. 나는 ans 관리 때문에 클래스까지 쓰게 됐는 그냥 +로 구현해도 가능하다.
 # + 등의 사칙연산을 쓰면 대신 내 머리가 좀 더 복잡해진다.
+
+
+# 1123 한번 더
+def solution(numbers, target):
+    if sum(numbers) < target:
+        return 0
+    if len(numbers) == 1:
+        return 1 if numbers[0] == abs(target) else 0
+    return solution(numbers[1:], target - numbers[0]) + solution(numbers[1:], target + numbers[0])
+# Status: Accepted
